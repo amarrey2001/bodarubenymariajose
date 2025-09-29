@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Invitación de boda - 4 de julio de 2026 en Cerropuerta. Confirma tu asistencia y acompáñanos en este día tan especial.">
+  <title>Nuestra Boda</title>
+  <!-- Fuentes de Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Lora', serif;
+      background-image: url("img/foto.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    h1, h2 {
+      font-family: 'Great Vibes', cursive;
+      color: beige;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    .countdown {
+      font-size: clamp(1.5em, 4vw, 2em);
+      color:beige;
+      margin: 15px 0;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .section, .seccion {
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 500px; /* más estrecho */
+    }
+    .section {
+      background-color: rgba(0, 0, 0, 0.5); /* negro semitransparente */
+    }
+    .seccion {
+      background-color: rgba(0, 0, 0, 0.5); /* negro semitransparente */
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: beige;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: grey;
+    }
+    form {
+      display: none;
+      margin-top: 20px;
+    }
+    input, select, textarea {
+      padding: 10px;
+      margin: 10px auto;
+      width: 80%;
+      max-width: 400px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    p{
+      color:beige;
+    }
+    iframe {
+      width: 100%;
+      max-width: 500px;
+      height: 300px;
+      border: none;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+    .visible {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="seccion">
+  <h1>¡Nos Casamos!</h1>
+  <div class="countdown" id="countdown"></div>
+</div>
+
+<!-- DETALLES DEL EVENTO -->
+<div class="section">
+  <h2>Detalles del Evento</h2>
+  <p>📍 Lugar: Cerropuerta</p>
+  <p>📅 Fecha: 4 de julio de 2026</p>
+  <p>🕒 Hora: 20:00h</p>
+</div>
+
+<!-- AGENDA -->
+<div class="section">
+  <h2>Agenda del Día</h2>
+  <p>💒 Ceremonia: 20:00</p>
+  <p>🍸 Cóctel: 21:00</p>
+  <p>🍽️ Cena: 22:30</p>
+  <p>🎉 Fiesta: 01:00</p>
+</div>
+
+<!-- CONFIRMAR ASISTENCIA -->
+<div class="section">
+  <h2>Confirma tu Asistencia</h2>
+  <button id="btnAsistencia" onclick="mostrarFormulario(event)">Confirmar Asistencia</button>
+  <form id="rsvpForm" action="https://formspree.io/f/mnnzlglw" method="POST">
+    <input type="text" name="Nombre" placeholder="Tu nombre completo" required /><br/>
+    <select name="Asistencia" id="asistencia" required onchange="mostrarFamilia()">
+      <option value="">¿Vienes solo/a o con familia?</option>
+      <option value="Individual">Voy solo/a</option>
+      <option value="Con acompañante">Voy con acompañante</option>
+      <option value="Familia">Voy con mi familia</option>
+    </select><br/>
+
+    <div id="familiaDetails" style="display:none;">
+      <input type="number" name="Adultos" placeholder="Número de adultos" min="1" /><br/>
+      <input type="number" name="Niños" placeholder="Número de niños" min="0" /><br/>
+    </div>
+
+    <input type="tel" name="Numero de telefono" placeholder="Tu número de telefono" required /><br/>
+    <textarea name="Alergias" placeholder="¿Tienes alguna restricción alimentaria?" rows="3"></textarea><br/>
+
+    <!-- NUEVO: Pregunta del bus -->
+    <select name="Bus" id="bus" required onchange="mostrarAvisoBus()">
+      <option value="">¿Vas a usar el bus?</option>
+      <option value="Si">Sí</option>
+      <option value="No">No</option>
+    </select><br/>
+
+    <p id="avisoBus" style="display:none; color: lightgreen; font-weight:bold;">
+      ✅ Perfecto, te enviaremos el horario del bus próximamente.
+    </p>
+
+    <button type="submit">Enviar Confirmación</button>
+  </form>
+</div>
+
+<!-- MAPA -->
+<iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.7670100858904!2d-3.7422123244288006!3d37.748609871992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6e77f915c3a2f9%3A0x3b64471336d5fb66!2sCerropuerta%20boda!5e0!3m2!1ses!2ses!4v1754832697403!5m2!1ses!2ses"
+  title="Ubicación de la boda en Google Maps"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+<script>
+  // Función para añadir ceros a la izquierda
+  function pad(n) {
+    return n < 10 ? '0' + n : n;
+  }
+
+  // Cuenta atrás
+  const countdown = document.getElementById("countdown");
+  const weddingDate = new Date("2026-07-04T20:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    if (distance < 0) {
+      countdown.innerHTML = "¡Ya comenzó la boda!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdown.innerHTML = `${days}d ${pad(hours)}h ${pad(minutes)}m ${pad(seconds)}s`;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Mostrar formulario y ocultar botón
+  function mostrarFormulario(event) {
+    document.getElementById("rsvpForm").classList.add("visible");
+    document.getElementById("btnAsistencia").style.display = "none";
+  }
+
+  // Mostrar campos de familia si corresponde
+  function mostrarFamilia() {
+    const asistencia = document.getElementById('asistencia').value;
+    const familiaDetails = document.getElementById('familiaDetails');
+
+    if (asistencia === 'Familia') {
+      familiaDetails.style.display = 'block';
+      familiaDetails.querySelector('input[name="Adultos"]').required = true;
+      familiaDetails.querySelector('input[name="Niños"]').required = true;
+    } else {
+      familiaDetails.style.display = 'none';
+      familiaDetails.querySelector('input[name="Adultos"]').required = false;
+      familiaDetails.querySelector('input[name="Niños"]').required = false;
+    }
+  }
+
+  // Mostrar aviso si eligen usar el bus
+  function mostrarAvisoBus() {
+    const bus = document.getElementById('bus').value;
+    const aviso = document.getElementById('avisoBus');
+
+    if (bus === 'Si') {
+      aviso.style.display = 'block';
+    } else {
+      aviso.style.display = 'none';
+    }
+  }
+</script>
+
+</body>
+</html>
