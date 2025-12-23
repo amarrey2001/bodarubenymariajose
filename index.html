@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Invitación de boda - 4 de julio de 2026 en Cerropuerta. Confirma tu asistencia y acompáñanos en este día tan especial.">
   <title>Nuestra Boda</title>
-  <!-- Fuentes de Google -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora&display=swap" rel="stylesheet">
   <style>
     body {
@@ -98,24 +97,21 @@
   <div class="countdown" id="countdown"></div>
 </div>
 
-<!-- DETALLES DEL EVENTO -->
 <div class="section">
   <h2>Detalles del Evento</h2>
   <p>📍 Lugar: Cerropuerta</p>
   <p>📅 Fecha: 4 de julio de 2026</p>
-  <p>🕒 Hora: 20:00h</p>
+  <p>🕒 Hora: 19:30h</p>
 </div>
 
-<!-- AGENDA -->
 <div class="section">
   <h2>Agenda del Día</h2>
-  <p>💒 Ceremonia: 20:00</p>
+  <p>💒 Ceremonia: 19:30</p>
   <p>🍸 Cóctel: 21:00</p>
   <p>🍽️ Cena: 22:30</p>
   <p>🎉 Fiesta: 01:00</p>
 </div>
 
-<!-- CONFIRMAR ASISTENCIA -->
 <div class="section">
   <h2>Confirma tu Asistencia</h2>
   <button id="btnAsistencia" onclick="mostrarFormulario(event)">Confirmar Asistencia</button>
@@ -136,22 +132,21 @@
     <input type="tel" name="Numero de telefono" placeholder="Tu número de telefono" required /><br/>
     <textarea name="Alergias" placeholder="¿Tienes alguna restricción alimentaria?" rows="3"></textarea><br/>
 
-    <!-- NUEVO: Pregunta del bus -->
     <select name="Bus" id="bus" required onchange="mostrarAvisoBus()">
       <option value="">¿Vas a usar el bus?</option>
       <option value="Si">Sí</option>
       <option value="No">No</option>
     </select><br/>
 
-    <p id="avisoBus" style="display:none; color: lightgreen; font-weight:bold;">
-      ✅ Perfecto, te enviaremos el horario del bus próximamente.
+    <p id="avisoBus" style="display:none; font-weight:bold;">
+      SALIDA: 18:45h, desde:
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1058.572071937098!2d-3.7866283919279913!3d37.77572134023268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6dd709bd3da9bb%3A0x4d34a20ea279fd83!2sEl%20Corte%20Ingl%C3%A9s%20Ja%C3%A9n!5e0!3m2!1ses!2ses!4v1766505991241!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </p>
 
     <button type="submit">Enviar Confirmación</button>
   </form>
 </div>
 
-<!-- MAPA -->
 <iframe
   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.7670100858904!2d-3.7422123244288006!3d37.748609871992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6e77f915c3a2f9%3A0x3b64471336d5fb66!2sCerropuerta%20boda!5e0!3m2!1ses!2ses!4v1754832697403!5m2!1ses!2ses"
   title="Ubicación de la boda en Google Maps"
@@ -168,7 +163,7 @@
 
   // Cuenta atrás
   const countdown = document.getElementById("countdown");
-  const weddingDate = new Date("2026-07-04T20:00:00").getTime();
+  const weddingDate = new Date("2026-07-04T19:30:00").getTime();
 
   function updateCountdown() {
     const now = new Date().getTime();
